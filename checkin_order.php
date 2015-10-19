@@ -2,10 +2,10 @@
 $conn = mysql_connect("localhost","root","");
 mysql_select_db("whouse",$conn);
 if(count($_POST)>0) {
-mysql_query("UPDATE client set name='" . $_POST["name"] . "', surname='" . $_POST["surname"] . "', tel='" . $_POST["tel"] . "', email='" . $_POST["email"] . "' WHERE idno='" . $_POST["idno"] . "'");
+mysql_query("INSERT into stored_order (Order_ID, Order_Name, Order_date, Order_From, Order_To, Order_Qty, storage_id, client_id, emp_id, check_qty) VALUES Order_ID='" . $_POST["Order_ID"] . "', Order_Name='" . $_POST["Order_Name"] . "', Order_date='" . $_POST["Order_date"] . "', Order_From='" . $_POST["Order_From"] . "', Order_To='" . $_POST["Order_To"] . "', Order_Qty='" . $_POST["Order_Qty"] . "', storage_id='" . $_POST["storage_id"] . "', client_id='" . $_POST["client_id"] . "', emp_id='" . $_POST["emp_id"] . "', check_qty='" . $_POST["check_qty"] . "'");
 $message = "Record Modified Successfully";
 }
-$result = mysql_query("SELECT * FROM order_details WHERE order_id='" . $_GET["order_id"] . "'");
+$result = mysql_query("SELECT * FROM order_details WHERE Order_ID='" . $_GET["Order_ID"] . "'");
 $row = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
@@ -107,33 +107,49 @@ $row = mysql_fetch_array($result);
 											<table border="0" cellpadding="10" cellspacing="0" width="500" align="center" class="tblSaveForm">
 											<tr class="tableheader">
 											<td colspan="2">Checkin Order Details</td>
-</tr>
-<tr>
-<td><label>Order_id</label></td>
-<td><input type="hidden" name="idno" class="txtField" value="<?php echo $row['order_id']; ?>"><input type="text" name="name" class="txtField" value="<?php echo $row['name']; ?>"></td>
-</tr>
-<tr>
-<td><label>Order_name</label></td>
-<td><input type="text" name="surname" class="txtField" value="<?php echo $row['order_name']; ?>"></td>
-<tr>
-</tr>
-<td><label>Order_date</label></td>
-<td><input type="text" name="tel" class="txtField" value="<?php echo $row['order_date']; ?>"></td>
-</tr>
-<tr>
-<td><label>Order_from</label></td>
-<td><input type="text" name="email" class="txtField" value="<?php echo $row['order_from']; ?>"></td>
-</tr>
-<tr>
-<td><label>Order_to</label></td>
-<td><input type="text" name="email" class="txtField" value="<?php echo $row['order_to']; ?>"></td>
-</tr>
-<tr>
-<td><label>Order_Qty</label></td>
-<td><input type="text" name="email" class="txtField" value="<?php echo $row['order_qty']; ?>"></td>
-</tr>
-<tr>
-<td colspan="2"><input type="submit" name="submit" value="Submit" class="btnSubmit"></td>
+											</tr>
+									<tr>
+									<td><label>Order_id</label></td>
+									<td><input type="text" name="Order_ID" class="txtField" value="<?php echo $row['Order_ID']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Order_name</label></td>
+									<td><input type="text" name="Order_name" class="txtField" value="<?php echo $row['Order_Name']; ?>"></td>
+									<tr>
+									</tr>
+									<td><label>Order_date</label></td>
+									<td><input type="text" name="Order_date" class="txtField" value="<?php echo $row['Order_date']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Order_from</label></td>
+									<td><input type="text" name="Order_From" class="txtField" value="<?php echo $row['Order_From']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Order_to</label></td>
+									<td><input type="text" name="Order_To" class="txtField" value="<?php echo $row['Order_To']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Order_Qty</label></td>
+									<td><input type="text" name="Order_Qty" class="txtField" value="<?php echo $row['Order_Qty']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Storage Id</label></td>
+									<td><input type="text" name="storage_id" class="txtField" value="<?php echo $row['storage_id']; ?>"></td>
+									</tr>
+									<tr>
+									<tr>
+									<td><label>Client Id</label></td>
+									<td><input type="text" name="client_id" class="txtField" value="<?php echo $row['client_id']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Employee ID</label></td>
+									<td><input type="text" name="emp_id" class="txtField" value=""></td>
+									</tr>
+									<tr>
+									<td><label>Check Qty</label></td>
+									<td><input type="text" name="check_qty" class="txtField" value="<?php echo $row['Check_Qty']; ?>"></td>
+									</tr>
+									<td colspan="2"><input type="submit" name="submit" value="Submit" class="btnSubmit"></td>
 									</tr>
 									</table>
 									</div>
