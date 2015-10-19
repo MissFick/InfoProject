@@ -88,9 +88,9 @@
 								<i class="fa fa-desktop"></i>
 							</div>
 							<div class="feature-content">
-								<h1>Shelf Storage</h1>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-								 
+								<h1>Order Shelf Storage</h1>
+								<p>A Sentence on how wonderful our Shelf Storage is</p>
+								 <a href="shelf_order.php">Order</a>
 							</div>
 						</div>
 						<div class="col-md-4 feature-2 wp2 delay-05s">
@@ -98,9 +98,9 @@
 								<i class="fa fa-flash"></i>
 							</div>
 							<div class="feature-content">
-								<h1>Cold Storage</h1>
-								<p>Perfect if you run your own start-up, product or service. Boxify can showcase your business converting your visits to income.</p>
-								
+								<h1>Order Cold Storage</h1>
+								<p>Sentence on how wonderful our cold storage is</p>
+								 <a href="cold_order.php">Order</a>
 							</div>
 						</div>
 						<div class="col-md-4 feature-3 wp2 delay-1s">
@@ -109,8 +109,8 @@
 							</div>
 							<div class="feature-content">
 								<h1>Hazardous Storage</h1>
-								<p>As aways, download Boxify for free exclusively from Codrops. If you love Boxify and want to thank me, simply <a href="http://peterfinlan.com/">buy me a beer</a>. </p>
-								<a href="shelf_order.php?order_id=<?php echo $row["order_id"]; ?>?client_id=<?php echo $row["client_id"]; ?> class="link">Check In</a></td>
+								<p>A Sentence on how safe our Hazardous storage is</p>
+								 <a href="hazard_order.php">Order</a>
 							</div>
 						</div>
 
@@ -240,22 +240,24 @@
 					<div class="col-md-12">
 						<?php
 						$conn = mysql_connect("localhost","root","");
-						mysql_select_db("warehouse",$conn);
-						$result = mysql_query("SELECT * from storage_order where client_id='8301236547896'");
+						mysql_select_db("whouse",$conn);
+						$result = mysql_query("SELECT * from order_details where client_id='1'");
 						$row= mysql_fetch_row($result);
 						?>
 						<h1>Your Orders are as follows</h1>
+						<table width "500"><tr><th>Order Name</th></td><th>Storage ID</th><th>Order Quantity</th>
 <?php
 $i=0;
-while($row = mysql_fetch_array($result)) {
+while($row = mysql_fetch_assoc($result)) {
 if($i%2==0)
 $classname="evenRow";
 else
 $classname="oddRow";
 ?>
-				<div>
-								<p class="color1 no_pad">Order Name:</p><?php echo $row["order_name"]; ?>
+				<div>	
+								<p class="color1 no_pad">Order Name:</p><?php echo $row["Order_Name"]; ?>
 								<p class="color1 no_pad">Storage Type</p><?php echo $row["storage_id"]; ?>
+								<p class="color1 no_pad">Order Qty</p><?php echo $row["Order_Qty"];?>
 								<!--p class="color1 no_pad">Order_Date</p></*?php echo $row["order_date"]; ?>
 								<p class="color1 no_pad">Order_From</p></*?php echo $row["order_from"]; ?>
 								<p class="color1 no_pad">Order_To</p></*?php echo $row["order_to"]; ?>

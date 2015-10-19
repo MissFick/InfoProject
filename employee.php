@@ -118,7 +118,7 @@ $classname="oddRow";
 								<td><?php echo $row["client_id"]; ?></td>
 								<td><?php echo $row["orderdate"]; ?></td>
 								<td><a href="checkin_order.php?order_id=<?php echo $row["order_id"]; ?>?client_id=<?php echo $row["client_id"]; ?> class="link">Check In</a></td>
-								<td><a href="checkin_order.php?userId=<?php echo $row["order_id"]; ?> class="link"><img alt='Edit' title='Edit' src='images/edit.png' width='15px' height='15px' hspace='10' /></a>  <a href="delete_user.php?userId=<?php echo $row["userId"]; ?>"  class="link"><img alt='Delete' title='Delete' src='images/delete.png' width='15px' height='15px'hspace='10' /></a></td>
+								<!--td><a href="checkin_order.php?userId=<?php echo $row["order_id"]; ?> class="link"><img alt='Edit' title='Edit' src='images/edit.png' width='15px' height='15px' hspace='10' /></a>  <a href="delete_user.php?userId=</?php echo $row["userId"]; ?>"  class="link"><img alt='Delete' title='Delete' src='images/delete.png' width='15px' height='15px'hspace='10' /></a></td-->
 							</tr>
 				
 <?php

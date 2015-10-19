@@ -209,12 +209,12 @@
 						<tr><td><label>Cost of Shelf Storage :</label></td><td> <?php echo $row["storage_cost"]; ?></td></tr>
 						</table>
 						<tr><td><label>Shelf Storage = R500  per unit per day <br/>
-						
+						<input type="hidden" name="storage_available" id="storage_available" value="<?php echo $row["storage_available"]; ?>">
 						<input type="hidden" name="storage_cost" id="storage_cost" value="<?php echo $row["storage_cost"]; ?>"><br/>
 						<input type="hidden" name="storage_id" id="storage_id" value="1"><br/>
 						<input type="hidden" name="client_id" id="client_id" value="8301236547896">
 						<input type="submit" name="submit" value="Submit" class="btnSubmit">
-						
+						<?php header("Location: neworder.php"); ?>
 					</form>
 									
 				<!--/dd>

@@ -8,35 +8,43 @@ $client_id  = $_POST['client_id'];
 $cost = $_POST['storage_cost'];
 $date = date();
 $total = $qty * $cost;
+$avail = $_POST['storage_available'];
+$newavail = $avail - $qty;
 
-$sql = " "
+$sql = "UPDATE storage_type set storage_available='$newavail' where storage_id ='$storage_id'";
+
 
 $conn = mysql_connect("localhost","root","");
 mysql_select_db("warehouse",$conn);
-mysql_query("INSERT into storage_order (order_name, order_date, order_from, order_to, order_qty, storage_id, client_id, order_total) VALUES ('$name', '$date', '$from', '$to', '$storage_id', '$client_id', '$total')";
+mysql_query("INSERT into storage_order (order_name, order_date, order_from, order_to, order_qty, storage_id, client_id, order_total) VALUES ('$name', '$date', '$from', '$to', '$storage_id', '$client_id', '$total')");
 ?>
 
 <?php
 $result = mysql_query("SELECT * FROM client where client_id='$client_id'");
 while($row= mysql_fetch_assoc($result)){
+$client_name= $row["c_name"];
 $recipient= $row["client_email"];
+}
 
         $mail_body .= "<h2> Your Invoice </h2>";
         $mail_body .= "<h3>Order Name </h3>";
         $mail_body .= $name;
         $mail_body .= " <br/>";
-        $mail_body .= "<h3> Visitor Contact Number </h3>";
-        $mail_body .= $contactno;
+        $mail_body .= "<h3> Order Quantity </h3>";
+        $mail_body .= $qty;
         $mail_body .= " <br/>";
-        $mail_body .= "<h3>Visitor Email: </h3>";
+        $mail_body .= "<h3>Storage Type </h3>";
         $mail_body .= $email;
         $mail_body .= "<br/>";
-        $mail_body .= "<h3>Visitor Message: </h3>";
-        $mail_body .= $message;
+        $mail_body .= "<h3>Order From </h3>";
+        $mail_body .= $from;
+		$mail_body .= "<br/>";
+		$mail_body .= "<h3> Order To </h3>";
+		$mail_body .= $to;
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
-        $headers .= "From: Synergy CA Website <info@synergycaglobal.come>" . "\r\n";
+        $headers .= "From: Synergy Warehouse Website >" . "\r\n";
 
 	$send_form = mail($recipient,$subject,$mail_body,$headers);
         header("Location: neworder.php"); 
