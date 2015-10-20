@@ -151,7 +151,7 @@ $message = "New User Added Successfully";
 			<?php
 				$conn = mysql_connect("localhost","root","");
 				mysql_select_db("whouse",$conn);
-				$result = mysql_query("SELECT * FROM storage where storage_Id='2'");
+				$result = mysql_query("SELECT * FROM storage where storage_Id='3'");
 				$row= mysql_fetch_array($result);
 			?>
 				  <h1>Request for Shelf Storage</h1>
@@ -165,16 +165,16 @@ $message = "New User Added Successfully";
 						<!--tr><td><label>Date From </label></td><td><input type="text" name="order_from" class="date .start" id="basic"/></td></tr>
 						<tr><td><label>Date To</label></td><td><input type="text" name="order_to" class="date .end" id="basic"/></td></tr-->
 												
-						<tr><td><label>Cost of Cold Storage :</label></td><td>R <?php echo $row["price"]; ?></td></tr>
+						<tr><td><label>Cost of Hazardous Storage :</label></td><td>R <?php echo $row["price"]; ?></td></tr>
 						</table>
-						<tr><td><label>Cold Storage Price = per unit per day <br/>
+						<tr><td><label>Hazardous Storage Price = per unit per day <br/>
 						<input type="hidden" name="storage_cost" id="storage_cost" value="<?php echo $row["price"]; ?>"><br/>
 						<input type="hidden" name="storage_id" id="storage_id" value="1"><br/>
 						<input type="hidden" name="client_id" id="client_id" value="2">
 						<input type="submit" name="submit" value="Submit" class="btnSubmit">
 						
 					</form>
-					<a href="neworder.php">Return To Home Page</a>				
+									
 				<!--/dd>
 				<dt>Cold House</dt>
 				<dd>

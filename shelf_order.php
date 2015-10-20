@@ -174,6 +174,7 @@ $message = "New User Added Successfully";
 						<input type="submit" name="submit" value="Submit" class="btnSubmit">
 						
 					</form>
+					<a href="neworder.php">Return To Home Page</a>
 									
 				<!--/dd>
 				<dt>Cold House</dt>

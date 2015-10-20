@@ -2,9 +2,11 @@
 $conn = mysql_connect("localhost","root","");
 mysql_select_db("whouse",$conn);
 if(count($_POST)>0) {
+
 mysql_query("INSERT into stored_order(Order_ID, Order_Name, Order_date, Order_From, Order_To, Order_Qty, storage_id, client_id, emp_id, check_qty) VALUES (Order_ID='" . $_POST["Order_ID"] . "', Order_Name='" . $_POST["Order_Name"] . "', Order_date='" . $_POST["Order_date"] . "', Order_From='" . $_POST["Order_From"] . "', Order_To='" . $_POST["Order_To"] . "', Order_Qty='" . $_POST["Order_Qty"] . "', storage_id='" . $_POST["storage_id"] . "', client_id='" . $_POST["client_id"] . "', emp_id='" . $_POST["emp_id"] . "', check_qty='" . $_POST["check_qty"] . "')");
-$message = "Record Modified Successfully";
 mysql_query("DELETE from neworder_checkin WHERE Order_ID='" . $_POST["Order_ID"] . "'");
+$message = "Record Modified Successfully";
+
 }
 $result = mysql_query("SELECT * FROM order_details WHERE Order_ID='" . $_GET["Order_ID"] . "'");
 $row = mysql_fetch_array($result);

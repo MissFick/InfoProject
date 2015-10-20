@@ -56,7 +56,7 @@
 					<div class="row hero-content">
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown">Welcome to Synergy</h1>
-							<a href="#neworder" class="use-btn animated fadeInUp">New Order</a> <a href="#view" class="learn-btn animated fadeInUp">View Orders<i class="fa fa-arrow-left"></i></a><a href="#about" class="learn-btn animated fadeInUp">Dispatch<i class="fa fa-arrow-left"></i></a>
+							<a href="#neworder" class="use-btn animated fadeInUp">New Order</a> <a href="#view" class="learn-btn animated fadeInUp">View Orders & Request Dispatch<i class="fa fa-arrow-left"></i></a>
 						</div>
 					</div>
 				</div>
@@ -113,7 +113,7 @@
 								<div class="caption-content">
 									<a href="img/large/01.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Optimised For Design</p>
+										<p>We will handle your package</p>
 									</a>
 								</div>
 								</figcaption>
@@ -139,7 +139,7 @@
 								<div class="caption-content">
 									<a href="img/large/03.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Responsive and Adaptive</p>
+										<p></p>
 									</a>
 								</div>
 								</figcaption>
@@ -152,7 +152,7 @@
 								<div class="caption-content">
 									<a href="img/large/04.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Absolutely Free</p>
+										<p></p>
 									</a>
 								</div>
 								</figcaption>
@@ -169,7 +169,7 @@
 								<div class="caption-content">
 									<a href="img/large/05.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Multi-Purpose Design</p>
+										<p></p>
 									</a>
 								</div>
 								</figcaption>
@@ -182,7 +182,7 @@
 								<div class="caption-content">
 									<a href="img/large/06.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Exclusive to Codrops</p>
+										<p></p>
 									</a>
 								</div>
 								</figcaption>
@@ -218,7 +218,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="features-list" id="order">
+		<section class="features-list" id="view">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -243,6 +243,7 @@ $classname="oddRow";
 								<tr><td><?php echo $row["Order_Name"]; ?></td>
 									<td><?php echo $row["storage_id"]; ?></td>
 								    <td><?php echo $row["Order_Qty"]; ?></td>
+									<td><a href="dispatchorder.php?Order_ID=<?php echo $row["Order_ID"];?>">Request Dispatch</a></td>
 								</tr>
 								<!--p class="color1 no_pad">Order_Date</p></*?php echo $row["order_date"]; ?>
 								<p class="color1 no_pad">Order_From</p></*?php echo $row["order_from"]; ?>
@@ -257,7 +258,7 @@ $i++;
 			</table>
 			</div>
 		</section>
-		<section class="showcase">
+		<!--section class="showcase">
 			<div class="showcase-wrap">
 				<div class="texture-overlay"></div>
 				<div class="container">
@@ -296,15 +297,15 @@ $i++;
 					</div>
 				</div>
 			</div>
-		</section>
+		</section-->
 
-		<section class="screenshots-intro" id="view">
+		<!--section class="screenshots-intro" id="">
 			<!--?php
 				$conn = mysql_connect("localhost","root","");
 				mysql_select_db("whouse",$conn);
 				$result = mysql_query("SELECT * FROM order");
 				$row= mysql_fetch_array($result);
-			?-->
+			?>
 			<div class="container" >
 				<div class="row">
 					<div class="col-md-12">
@@ -440,12 +441,12 @@ $i++;
 					</div>
 				</div>
 			</div>
-		</section>
+		</section-->
 		<footer>
 			<div class="container">
-				<!--div class="row">
+				<div class="row">
 					<div class="col-md-5">
-						<h1 class="footer-logo">
+						<!--h1 class="footer-logo">
 						<img src="img/logo-blue.png" alt="Footer Logo Blue">
 						</h1>
 						<p>© Boxify 2015 - <a href="http://tympanus.net/codrops/licensing/">Licence</a> - Designed &amp; Developed by <a href="http://www.peterfinlan.com/">Peter Finlan</a></p>

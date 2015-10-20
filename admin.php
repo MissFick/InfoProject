@@ -57,7 +57,7 @@
 				<div class="container">
 					<div class="row nav-wrapper">
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-							<a href="#"><img src="img/logo-white.png" alt="NADIA Logo"></a>
+							<a href="#"><img src="img/butterfly.png" alt="NADIA Logo"></a>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
 							<p></p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
@@ -66,49 +66,28 @@
 					<div class="row hero-content">
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown">Welcome to Synergy</h1>
-							<a href="#neworders" class="use-btn animated fadeInUp">Manage</a> <a href="#dipatch" class="learn-btn animated fadeInUp">View Reports<i class="fa fa-arrow-left"></i></a>
+							<a href="#manage" class="use-btn animated fadeInUp">Manage</a> <a href="#dipatch" class="learn-btn animated fadeInUp">View Reports<i class="fa fa-arrow-left"></i></a>
 						</div>
 					</div>
 				</div>
 			</section>
 		</header>
-		<section class="video" id="signin">
+		<section class="video" id="manage">
 			
 			<div class="container">
-				<div class="row" id="neworders">
+				<div class="row" id="manage">
 					<?php
 				$conn = mysql_connect("localhost","root","");
 				mysql_select_db("whouse",$conn);
 				$result = mysql_query("SELECT * FROM neworder");
 				$row= mysql_fetch_array($result);
 			?>
-										<h1>New Orders are as follows</h1>
-										<table width="500" cellpadding="10"><tr><th>Order ID</th><th>Client Id</th><th>Order_Date</th><th>dispatch</tr>
-<?php
-$i=0;
-while($row = mysql_fetch_array($result)) {
-if($i%2==0)
-$classname="evenRow";
-else
-$classname="oddRow";
-?>
-				
-							<tr>
-								<td><?php echo $row["Order_ID"]; ?></td>
-								<td><?php echo $row["client_id"]; ?></td>
-								<td><?php echo $row["orderdate"]; ?></td>
-								<td><a href="checkin_order.php?Order_ID=<?php echo $row["Order_ID"];?>">Check In</a></td>
-								
-							</tr>
-				
-<?php
-$i++;
-}
-?>
-	</table>
+				<h1>New Orders are as follows</h1>
+				<a href="editstorage" />Edit Storage </a>
+												
 			</div>
 			</div>
-		</section id="signin">
+		</section>
 		<section class="features-intro" id="">
 			<div class="container-fluid">
 				<div class="row">
@@ -413,8 +392,8 @@ $i++;
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center wp4">
-						<h1>Seen Enough?</h1>
-						<a href="#" class="download-btn">Download! <i class="fa fa-download"></i></a>
+						<!--h1>Seen Enough?</h1>
+						<a href="#" class="download-btn">Download! <i class="fa fa-download"></i></a-->
 					</div>
 				</div>
 			</div>
