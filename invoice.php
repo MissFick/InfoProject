@@ -12,12 +12,9 @@ $total = $qty * $cost * $days;
 $avail = $_POST['available'];
 $newavail = $avail - $qty;
 
-$sql = "UPDATE storage_type set storage_available='$newavail' where storage_id ='$storage_id'";
-
-
 $conn = mysql_connect("localhost","root","");
 mysql_select_db("whouse",$conn);
-mysql_query("INSERT into storage_order (order_name, order_date, order_from, order_to, order_qty, storage_id, client_id, order_total) VALUES ('$name', '$date', '$from', '$to', '$storage_id', '$client_id', '$total')");
+mysql_query("INSERT into invoice (order_name, storage_id, client_id, qty, from, to, days, total) VALUES ($name, $storage_id, $client_id, $qty, $from, $to, $days, $total);");
 ?>
 <html>
 	<body>
