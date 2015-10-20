@@ -17,9 +17,6 @@
 		
 		<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
 		
-		<link rel="stylesheet" type="text/css" href="slidedeck.skin.css" media="screen" />
-		
-		<script type="text/javascript" src="slidedeck.jquery.lite.pack.js"></script>
 		<script src="js/modernizr.custom.js"></script>
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/jquery.fancybox.css" rel="stylesheet">
@@ -30,21 +27,8 @@
 		<link href="css/styles.css" rel="stylesheet">
 		<link href="css/queries.css" rel="stylesheet">
 		
-		<!-- Facebook and Twitter integration -->
-		<meta property="og:title" content=""/>
-		<meta property="og:image" content=""/>
-		<meta property="og:url" content=""/>
-		<meta property="og:site_name" content=""/>
-		<meta property="og:description" content=""/>
-		<meta name="twitter:title" content="" />
-		<meta name="twitter:image" content="" />
-		<meta name="twitter:url" content="" />
-		<meta name="twitter:card" content="" />
-		<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
-		
-		<link rel="stylesheet" type="text/css" href="slidedeck.skin.css" media="screen" />
-		
-		<script type="text/javascript" src="slidedeck.jquery.lite.pack.js"></script>
+	
+	
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -63,7 +47,7 @@
 				<div class="container">
 					<div class="row nav-wrapper">
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-							<a href="#"><img src="img/logo-white.png" alt="NADIA Logo"></a>
+							<a href="#"><img src="img/butterfly.png" alt="NADIA Logo"></a>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
 							<!--p>STAFF</p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a-->
@@ -85,7 +69,7 @@
 								
 						<div class="col-md-4 feature-1 wp2">
 							<div class="feature-icon">
-								<i class="fa fa-desktop"></i>
+								<i><img src="img/shelf_icon.jpg" alt="shelf_icon"/></i>
 							</div>
 							<div class="feature-content">
 								<h1>Order Shelf Storage</h1>
@@ -95,7 +79,7 @@
 						</div>
 						<div class="col-md-4 feature-2 wp2 delay-05s">
 							<div class="feature-icon">
-								<i class="fa fa-flash"></i>
+								<i><img src="img/cold_icon.jpg" alt="cold_icon"/></i>
 							</div>
 							<div class="feature-content">
 								<h1>Order Cold Storage</h1>
@@ -105,7 +89,7 @@
 						</div>
 						<div class="col-md-4 feature-3 wp2 delay-1s">
 							<div class="feature-icon">
-								<i class="fa fa-heart"></i>
+								<i><img src="img/hazard_icon.jpg" alt="hazard_icon"/></i>
 							</div>
 							<div class="feature-content">
 								<h1>Hazardous Storage</h1>
@@ -137,12 +121,12 @@
 						</li>
 						<li>
 							<figure>
-								<img src="img/02-screenshot.jpg" alt="Screenshot 01">
+								<img src="img/03-screenshot.jpg" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/02.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>User Centric Design</p>
+										<p>Warehousing Made Simpler</p>
 									</a>
 								</div>
 								</figcaption>
@@ -150,7 +134,7 @@
 						</li>
 						<li>
 							<figure>
-								<img src="img/03-screenshot.jpg" alt="Screenshot 01">
+								<img src="img/07-screenshot.jpg" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/03.jpg" class="single_image">
@@ -206,7 +190,7 @@
 						</li>
 						<li>
 							<figure>
-								<img src="img/07-screenshot.jpg" alt="Screenshot 01">
+								<img src="img/02-screenshot.jpg" alt="Screenshot 01">
 								<figcaption>
 								<div class="caption-content">
 									<a href="img/large/07.jpg" class="single_image">
@@ -224,7 +208,7 @@
 								<div class="caption-content">
 									<a href="img/large/08.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>In Sydney, Australia</p>
+										<p>Careful Planning and Management</p>
 									</a>
 								</div>
 								</figcaption>
@@ -245,7 +229,8 @@
 						$row= mysql_fetch_row($result);
 						?>
 						<h1>Your Orders are as follows</h1>
-						<table width "500"><tr><th>Order Name</th></td><th>Storage ID</th><th>Order Quantity</th>
+						<table width="500" cellpadding="10">
+						<tr><th>Order Name</th></td><th>Storage ID</th><th>Order Quantity</th>
 <?php
 $i=0;
 while($row = mysql_fetch_assoc($result)) {
@@ -255,9 +240,10 @@ else
 $classname="oddRow";
 ?>
 				<div>	
-								<p class="color1 no_pad">Order Name:</p><?php echo $row["Order_Name"]; ?>
-								<p class="color1 no_pad">Storage Type</p><?php echo $row["storage_id"]; ?>
-								<p class="color1 no_pad">Order Qty</p><?php echo $row["Order_Qty"];?>
+								<tr><td><?php echo $row["Order_Name"]; ?></td>
+									<td><?php echo $row["storage_id"]; ?></td>
+								    <td><?php echo $row["Order_Qty"]; ?></td>
+								</tr>
 								<!--p class="color1 no_pad">Order_Date</p></*?php echo $row["order_date"]; ?>
 								<p class="color1 no_pad">Order_From</p></*?php echo $row["order_from"]; ?>
 								<p class="color1 no_pad">Order_To</p></*?php echo $row["order_to"]; ?>
@@ -268,7 +254,7 @@ $classname="oddRow";
 $i++;
 }
 ?>
-
+			</table>
 			</div>
 		</section>
 		<section class="showcase">

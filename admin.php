@@ -25,8 +25,20 @@
 		<link href="css/queries.css" rel="stylesheet">
 		
 		<!-- Facebook and Twitter integration -->
+		<meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:url" content="" />
+		<meta name="twitter:card" content="" />
+		<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
 		
+		<link rel="stylesheet" type="text/css" href="slidedeck.skin.css" media="screen" />
 		
+		<script type="text/javascript" src="slidedeck.jquery.lite.pack.js"></script>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -45,7 +57,7 @@
 				<div class="container">
 					<div class="row nav-wrapper">
 						<div class="col-md-6 col-sm-6 col-xs-6 text-left">
-							<a href="#"><img src="img/butterfly.png" alt="NADIA Logo"></a>
+							<a href="#"><img src="img/logo-white.png" alt="NADIA Logo"></a>
 						</div>
 						<div class="col-md-6 col-sm-6 col-xs-6 text-right navicon">
 							<p></p><a id="trigger-overlay" class="nav_slide_button nav-toggle" href="#"><span></span></a>
@@ -54,7 +66,7 @@
 					<div class="row hero-content">
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown">Welcome to Synergy</h1>
-							<a href="#neworders" class="use-btn animated fadeInUp">New Orders</a> <a href="#dipatch" class="learn-btn animated fadeInUp">Dipatch Requests<i class="fa fa-arrow-left"></i></a>
+							<a href="#neworders" class="use-btn animated fadeInUp">Manage</a> <a href="#dipatch" class="learn-btn animated fadeInUp">View Reports<i class="fa fa-arrow-left"></i></a>
 						</div>
 					</div>
 				</div>

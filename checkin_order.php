@@ -2,8 +2,9 @@
 $conn = mysql_connect("localhost","root","");
 mysql_select_db("whouse",$conn);
 if(count($_POST)>0) {
-mysql_query("INSERT into stored_order (Order_ID, Order_Name, Order_date, Order_From, Order_To, Order_Qty, storage_id, client_id, emp_id, check_qty) VALUES Order_ID='" . $_POST["Order_ID"] . "', Order_Name='" . $_POST["Order_Name"] . "', Order_date='" . $_POST["Order_date"] . "', Order_From='" . $_POST["Order_From"] . "', Order_To='" . $_POST["Order_To"] . "', Order_Qty='" . $_POST["Order_Qty"] . "', storage_id='" . $_POST["storage_id"] . "', client_id='" . $_POST["client_id"] . "', emp_id='" . $_POST["emp_id"] . "', check_qty='" . $_POST["check_qty"] . "'");
+mysql_query("INSERT into stored_order(Order_ID, Order_Name, Order_date, Order_From, Order_To, Order_Qty, storage_id, client_id, emp_id, check_qty) VALUES (Order_ID='" . $_POST["Order_ID"] . "', Order_Name='" . $_POST["Order_Name"] . "', Order_date='" . $_POST["Order_date"] . "', Order_From='" . $_POST["Order_From"] . "', Order_To='" . $_POST["Order_To"] . "', Order_Qty='" . $_POST["Order_Qty"] . "', storage_id='" . $_POST["storage_id"] . "', client_id='" . $_POST["client_id"] . "', emp_id='" . $_POST["emp_id"] . "', check_qty='" . $_POST["check_qty"] . "')");
 $message = "Record Modified Successfully";
+mysql_query("DELETE from neworder_checkin WHERE Order_ID='" . $_POST["Order_ID"] . "'");
 }
 $result = mysql_query("SELECT * FROM order_details WHERE Order_ID='" . $_GET["Order_ID"] . "'");
 $row = mysql_fetch_array($result);
@@ -54,16 +55,7 @@ $row = mysql_fetch_array($result);
 		<link href="css/styles.css" rel="stylesheet">
 		<link href="css/queries.css" rel="stylesheet">
 		
-		<!-- Facebook and Twitter integration -->
-		<meta property="og:title" content=""/>
-		<meta property="og:image" content=""/>
-		<meta property="og:url" content=""/>
-		<meta property="og:site_name" content=""/>
-		<meta property="og:description" content=""/>
-		<meta name="twitter:title" content="" />
-		<meta name="twitter:image" content="" />
-		<meta name="twitter:url" content="" />
-		<meta name="twitter:card" content="" />
+		<
 		<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="slidedeck.skin.css" media="screen" />
@@ -114,7 +106,7 @@ $row = mysql_fetch_array($result);
 									</tr>
 									<tr>
 									<td><label>Order_name</label></td>
-									<td><input type="text" name="Order_name" class="txtField" value="<?php echo $row['Order_Name']; ?>"></td>
+									<td><input type="text" name="Order_Name" class="txtField" value="<?php echo $row['Order_Name']; ?>"></td>
 									<tr>
 									</tr>
 									<td><label>Order_date</label></td>
@@ -147,7 +139,7 @@ $row = mysql_fetch_array($result);
 									</tr>
 									<tr>
 									<td><label>Check Qty</label></td>
-									<td><input type="text" name="check_qty" class="txtField" value="<?php echo $row['Check_Qty']; ?>"></td>
+									<td><input type="text" name="check_qty" class="txtField" value=""></td>
 									</tr>
 									<td colspan="2"><input type="submit" name="submit" value="Submit" class="btnSubmit"></td>
 									</tr>
