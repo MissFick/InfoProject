@@ -180,7 +180,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="features-list" id="features">
+		<section class="features-list" id="reports">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -190,12 +190,48 @@
 								<i class="fa fa-desktop"></i>
 							</div>
 							<div class="feature-content">
-								<h1>DO Everything Online</h1>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+							<?php
+						$conn = mysql_connect("localhost","root","");
+						mysql_select_db("whouse",$conn);
+						$result = mysql_query("SELECT * from invoice");
+						$row= mysql_fetch_row($result);
+						
+						?>
+						<h1>Your Invoices are as follows</h1>
+						<table width="500" cellpadding="10">
+						<tr><th>Order Name</th></td><th>Storage ID</th><th>Order Quantity</th><th>Invoice Total</th>
+<?php
+$i=0;
+$sales = 0;
+while($row = mysql_fetch_assoc($result)) {
+if($i%2==0)
+$classname="evenRow";
+else
+$classname="oddRow";
+?>
+				<div>	
+								<tr><td><?php echo $row["order_name"]; ?></td>
+									<td><?php echo $row["storage_id"]; ?></td>
+								    <td><?php echo $row["qty"]; ?></td>
+									<td><?php echo $row["total"]; ?></td>
 								
+								</tr>
+								<!--p class="color1 no_pad">Order_Date</p></*?php echo $row["order_date"]; ?>
+								<p class="color1 no_pad">Order_From</p></*?php echo $row["order_from"]; ?>
+								<p class="color1 no_pad">Order_To</p></*?php echo $row["order_to"]; ?>
+								<p class="color1 no_pad">QUANTITY</p></*?php echo $row["order_qty"]; ?>
+								<p class="color1 no_pad">STORAGE TYPE</p--></*?php echo $row["storage_id"] ?>
+				</div>
+<?php
+$i++;
+}
+$sales = $sales + '$row["total"]';
+?>
+			</table>
+			Total sales are <?php echo $sales ?>
 							</div>
 						</div>
-						<div class="col-md-4 feature-2 wp2 delay-05s">
+						<!--div class="col-md-4 feature-2 wp2 delay-05s">
 							<div class="feature-icon">
 								<i class="fa fa-flash"></i>
 							</div>
@@ -214,7 +250,7 @@
 								<p>As aways, download Boxify for free exclusively from Codrops. If you love Boxify and want to thank me, simply <a href="http://peterfinlan.com/">buy me a beer</a>. </p>
 								
 							</div>
-						</div>
+						</div-->
 
 					</div>
 				</div>

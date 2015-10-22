@@ -174,49 +174,10 @@ $message = "New User Added Successfully";
 						<input type="submit" name="submit" value="Submit" class="btnSubmit">
 						
 					</form>
-									
-				<!--/dd>
-				<dt>Cold House</dt>
-				<dd>
-					<h1>Request for Cold Storage</h1>
-                     <form>
-						Number Of Cold Storage Units Required <input type="text" name="qty"><br/>
-						Number of Pallets in Total: <input type="text" name="pallets"><br/><br/>
-						
-						Number Of Days Required <input type="text" name="days"><br/>
-						Arrival Date: <input type="text" name="from"><br/>
-						Picking Date: <input type="text" name="to"><br/><br/>
-						
-						Total Cost of Cold Storage : <input type="text" name="cost"><br/>
-						Cold Storage = R1000  per unit per day <br/>
-						<input type="submit" name="submit" value="Submit" class="btnSubmit">
-					 </form>
-				</dd>
 				
-				<dt>Hazard House</dt>
-				<dd>
-					<h1>Request for Hazardous Storage</h1>
-                     <form><table border="0">
-					 <tr>
-						<td>Number Of Hazardous Storage Units Required </td><td><input type="text" name="qty"></td></tr>
-						<tr><td>Number of Drums in Total: </td><td><input type=:"text" name="drums"></td></tr>
 						
-						<tr><td>Number Of Days Required </td><td><input type="text" name="days"></td></tr>
-						<tr><td>Arrival Date: </td><td><input type="text" name="from"></td></tr>
-						<tr><td>Picking Date: </td><td><input type="text" name="to"></td></tr>
-						<tr><td>Total Cost of Hazardous Storage : </td><td><input type="text" name="cost"></td></tr>
-						<table>
-						Hazardous Storage = R2000  per unit per day <br/>
-						<input type="submit" name="submit" value="Submit" class="btnSubmit" >
-					 </form>
-				</dd>
-				
-				<!--dt>Quotation</dt>
-				<dd>Slide content</dd>
-				
-				<dt>Labour Broking</dt>
-				<dd>Slide content</dd-->
-			</dl>
+						
+			
 		</div>
 		</section>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

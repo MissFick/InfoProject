@@ -2,19 +2,25 @@
 $name = $_POST['order_name'];
 $qty = $_POST['order_qty'];
 $from = $_POST['order_from'];
-$to =$_POST['order_to'];
-$days = $to - $from;
+$to = $_POST['order_to'];
+$days = $from - $to;
 $storage_id = $_POST['storage_id'];
 $client_id  = $_POST['client_id'];
 $cost = $_POST['storage_cost'];
-$date = date();
+$sqlfrom = date('Y-m-d', strtotime($from));
+$sqlto = date('Y-m-d',strtotime($to));
+$date = date('Y-m-d');
 $total = $qty * $cost * $days;
-$avail = $_POST['available'];
-$newavail = $avail - $qty;
+//$avail = $_POST['available'];
+//$newavail = $avail - $qty;
 
 $conn = mysql_connect("localhost","root","");
 mysql_select_db("whouse",$conn);
-mysql_query("INSERT into invoice (order_name, storage_id, client_id, qty, from, to, days, total) VALUES ($name, $storage_id, $client_id, $qty, $from, $to, $days, $total);");
+$query = "INSERT INTO invoice VALUES" . "(NULL, '$name', '$storage_id', '$client_id', '$qty', '$sqlfrom', '$sqlto', '$days', '$total', '$date')";
+$result = mysql_query($query);
+		if (!$result) echo "INSERT failed: $query<br>" .
+			$conn->error . "<br><br>";
+/*mysql_query("INSERT into invoice (order_name, storage_id, client_id, qty, from, to, days, total) VALUES ($name, $storage_id, $client_id, $qty, $from, $to, $days, $total);");*/
 ?>
 <html>
 	<body>
@@ -35,14 +41,14 @@ mysql_query("INSERT into invoice (order_name, storage_id, client_id, qty, from, 
 </body>
 </html>
 
-<?php
+ <?php /*
 $result = mysql_query("SELECT * FROM client where client_id='$client_id'");
 while($row= mysql_fetch_assoc($result)){
 $client_name= $row["c_name"];
 $recipient= $row["client_email"];
 }
 
-     /*   $mail_body .= "<h2> Your Invoice </h2>";
+       $mail_body .= "<h2> Your Invoice </h2>";
         $mail_body .= "<h3>Order Name </h3>";
         $mail_body .= $name;
         $mail_body .= " <br/>";

@@ -2,7 +2,7 @@
 $conn = mysql_connect("localhost","root","");
 mysql_select_db("whouse",$conn);
 
-$result = mysql_query("SELECT * FROM order_details WHERE Order_ID='" . $_GET["Order_ID"] . "'");
+$result = mysql_query("SELECT * FROM dispatch_request WHERE request_id='" . $_GET["request_id"] . "'");
 $row = mysql_fetch_array($result);
 ?>
 <!DOCTYPE html>
@@ -89,45 +89,32 @@ $row = mysql_fetch_array($result);
 									<li-->
 										
 									
-										<form name="frmUser" method="post" action="checkin_order_details.php">
+										<form name="frmUser" method="post" action="dispatch_details.php">
 										<div style="width:600px; margin-left: 20px">
 											<div align="right" style="padding-left: 5px; padding-bottom:5px; padding-top:-5px;"><!--a href="list_user.php" class="link"><img alt='List' title='List' src='images/list.png' width='15px' height='15px'/> List User</a--></div>
 											<table border="0" cellpadding="10" cellspacing="0" width="500" align="center" class="tblSaveForm">
 											<tr class="tableheader">
-											<td colspan="2">Checkin Order </td>
+											<td colspan="2">Dispatch Order </td>
 											</tr>
 									<tr>
-									<td><label>Order_id</label></td>
-									<td><input type="text" name="Order_ID" class="txtField" value="<?php echo $row['Order_ID']; ?>"></td>
+									<td><label>Request ID</label></td>
+									<td><input type="text" name="request_id" class="txtField" value="<?php echo $row['request_id']; ?>"></td>
 									</tr>
 									<tr>
-									<td><label>Order_name</label></td>
-									<td><input type="text" name="Order_Name" class="txtField" value="<?php echo $row['Order_Name']; ?>"></td>
+									<td><label>Client ID</label></td>
+									<td><input type="text" name="client_id" class="txtField" value="<?php echo $row['client_id']; ?>"></td>
 									<tr>
 									</tr>
-									<td><label>Order_date</label></td>
-									<td><input type="text" name="Order_date" class="txtField" value="<?php echo $row['Order_date']; ?>"></td>
+									<td><label>Order Name</label></td>
+									<td><input type="text" name="order_name" class="txtField" value="<?php echo $row['order_name']; ?>"></td>
 									</tr>
 									<tr>
-									<td><label>Order_from</label></td>
-									<td><input type="text" name="Order_From" class="txtField" value="<?php echo $row['Order_From']; ?>"></td>
-									</tr>
-									<tr>
-									<td><label>Order_to</label></td>
-									<td><input type="text" name="Order_To" class="txtField" value="<?php echo $row['Order_To']; ?>"></td>
-									</tr>
-									<tr>
-									<td><label>Order_Qty</label></td>
-									<td><input type="text" name="Order_Qty" class="txtField" value="<?php echo $row['Order_Qty']; ?>"></td>
-									</tr>
-									<tr>
-									<td><label>Storage Id</label></td>
+									<td><label>Storage ID</label></td>
 									<td><input type="text" name="storage_id" class="txtField" value="<?php echo $row['storage_id']; ?>"></td>
 									</tr>
 									<tr>
-									<tr>
-									<td><label>Client Id</label></td>
-									<td><input type="text" name="client_id" class="txtField" value="<?php echo $row['client_id']; ?>"></td>
+									<td><label>Dispatch Quantity</label></td>
+									<td><input type="text" name="qty" class="txtField" value="<?php echo $row['qty']; ?>"></td>
 									</tr>
 									<tr>
 									<td><label>Employee ID</label></td>
@@ -135,7 +122,7 @@ $row = mysql_fetch_array($result);
 									</tr>
 									<tr>
 									<td><label>Check Qty</label></td>
-									<td><input type="text" name="check_qty" class="txtField" value=""></td>
+									<td><input type="text" name="dispatch_qty" class="txtField" value=""></td>
 									</tr>
 									<td colspan="2"><input type="submit" name="submit" value="Submit" class="btnSubmit"></td>
 									</tr>

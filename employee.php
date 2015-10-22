@@ -54,7 +54,7 @@
 					<div class="row hero-content">
 						<div class="col-md-12">
 							<h1 class="animated fadeInDown">Welcome to Synergy</h1>
-							<a href="#neworders" class="use-btn animated fadeInUp">New Orders</a> <a href="#dipatch" class="learn-btn animated fadeInUp">Dipatch Requests<i class="fa fa-arrow-left"></i></a>
+							<a href="#neworders" class="use-btn animated fadeInUp">New Orders</a> <a href="#dispatch" class="learn-btn animated fadeInUp">Dispatch Requests<i class="fa fa-arrow-left"></i></a>
 						</div>
 					</div>
 				</div>
@@ -64,14 +64,14 @@
 			
 			<div class="container">
 				<div class="row" id="neworders">
-					<?php
+			<?php
 				$conn = mysql_connect("localhost","root","");
 				mysql_select_db("whouse",$conn);
 				$result = mysql_query("SELECT * FROM neworder");
 				$row= mysql_fetch_array($result);
 			?>
 										<h1>New Orders are as follows</h1>
-										<table width="500" cellpadding="10"><tr><th>Order ID</th><th>Client Id</th><th>Order_Date</th><th>dispatch</tr>
+										<table width="500" cellpadding="10"><tr><th>Order ID</th><th>Client Id</th><th>Order_Date</th><th>Action</tr>
 <?php
 $i=0;
 while($row = mysql_fetch_array($result)) {
@@ -97,6 +97,21 @@ $i++;
 			</div>
 			</div>
 		</section id="signin">
+		<section class="showcase">
+			<div class="showcase-wrap">
+				<div class="texture-overlay"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+						<p></p>
+<!-- MOBILE DEVICE WOULD BE NICE IF YOURS WERE WORKING -->
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</section>
 		<section class="features-intro" id="">
 			<div class="container-fluid">
 				<div class="row">
@@ -114,10 +129,10 @@ $i++;
 								<!--ul class="slides" id="featuresSlider">
 									<li-->
 										
-									
+	<!--REGISTRATION FORM OVER HERE>								
 										<form name="frmUser" method="post" action="register.php">
 										<div style="width:600px; margin-left: 20px">
-											<div align="right" style="padding-left: 5px; padding-bottom:5px; padding-top:-5px;"><!--a href="list_user.php" class="link"><img alt='List' title='List' src='images/list.png' width='15px' height='15px'/> List User</a--></div>
+											<div align="right" style="padding-left: 5px; padding-bottom:5px; padding-top:-5px;"><!--a href="list_user.php" class="link"><img alt='List' title='List' src='images/list.png' width='15px' height='15px'/> List User</a--><!--/div>
 											<table border="0" cellpadding="10" cellspacing="0" width="500" align="center" class="tblSaveForm">
 											<tr class="tableheader">
 											<td colspan="2"></td>
@@ -171,28 +186,53 @@ $i++;
 									</table>
 									</div>
 									</form>
-										<!--p><a href="#features" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p-->
+										
 									</li>
-									<!--li>
-										<h1>Multi-Purpose User Centric Design</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-										<p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
-									</li>
-									<li>
-										<h1>Made with Love, Released for Free</h1>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-										<p><a href="http://tympanus.net/codrops/?p=22554" class="arrow-btn">Find out why this freebie rocks! <i class="fa fa-long-arrow-right"></i></a></p>
-									<!--/li>
-								</ul-->
+	 <!-- END REGISTRATION FORM -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<section class="features-list" id="features">
+		
+		
+<!-- THREE COLUMN LAYOUT - COULD BE COULD FOR DEALING WITH THREE GROUPS OF DATA AT ONCE -->		
+		<section class="features-list" id="dispatch">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
+					<?php
+				$conn = mysql_connect("localhost","root","");
+				mysql_select_db("whouse",$conn);
+				$result = mysql_query("SELECT * FROM dispatch_request");
+				$row= mysql_fetch_array($result);
+			?>
+										<h1>New Dispatch Requests are as follows</h1>
+										<table width="500" cellpadding="10"><tr><th>Request ID</th><th>Client Id</th><th>Order Name</th><th>Storage Id</th><th>Qty</th><th>Action</tr>
+<?php
+$i=0;
+while($row = mysql_fetch_array($result)) {
+if($i%2==0)
+$classname="evenRow";
+else
+$classname="oddRow";
+?>
+				
+							<tr>
+								<td><?php echo $row["request_id"]; ?></td>
+								<td><?php echo $row["client_id"]; ?></td>
+								<td><?php echo $row["order_name"]; ?></td>
+								<td><?php echo $row["storage_id"]; ?></td>
+								<td><?php echo $row["qty"]; ?></td>
+								<td><a href="dispatch_order.php?request_id=<?php echo $row["request_id"];?>">Dispatch</a></td>
+								
+							</tr>
+				
+<?php
+$i++;
+}
+?>
+	</table>
+					<!--div class="col-md-12">
 								
 						<div class="col-md-4 feature-1 wp2">
 							<div class="feature-icon">
@@ -225,7 +265,7 @@ $i++;
 							</div>
 						</div>
 
-					</div>
+					</div-->
 				</div>
 			</div>
 		</section>
@@ -235,7 +275,9 @@ $i++;
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6">
-							<div class="device wp3">
+						<p> </p>
+<!-- MOBILE DEVICE WOULD BE NICE IF YOURS WERE WORKING -->
+							<!--div class="device wp3">
 								<div class="device-content">
 									<div class="showcase-slider">
 										<ul class="slides" id="showcaseSlider">
@@ -251,20 +293,9 @@ $i++;
 										</ul>
 									</div>
 								</div>
-							</div>
+							</div-->
 						</div>
-						<div class="col-md-6">
-							<h1>Download our Mobile App!!</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-							<blockquote class="team-quote">
-								<div class="avatar"><img src="img/avatar.png" alt="User Avatar"></div>
-								<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc." - Peter Finlan</p>
-								<div class="logo-quote">
-									
-								</div>
-							</blockquote>
-							<a href="#" class="download-btn">Download! <i class="fa fa-download"></i></a>
-						</div>
+				
 					</div>
 				</div>
 			</div>
@@ -274,6 +305,7 @@ $i++;
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
+<!-- WHITE SPACE SECTION narrow in height-->					
 						<h1>Storage Simplicity at your fingertips</h1>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
 						<p><a href="#screenshots" class="arrow-btn">See the screenshots! <i class="fa fa-long-arrow-right"></i></a></p>
@@ -318,7 +350,7 @@ $i++;
 								<div class="caption-content">
 									<a href="img/large/03.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Responsive and Adaptive</p>
+										<p>I will make many backups</p>
 									</a>
 								</div>
 								</figcaption>
@@ -331,7 +363,7 @@ $i++;
 								<div class="caption-content">
 									<a href="img/large/04.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Absolutely Free</p>
+										<p>I will not learn a program language while developing</p>
 									</a>
 								</div>
 								</figcaption>
@@ -348,7 +380,7 @@ $i++;
 								<div class="caption-content">
 									<a href="img/large/05.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Multi-Purpose Design</p>
+										<p>I will never choose another warehouse problem again</p>
 									</a>
 								</div>
 								</figcaption>
@@ -361,7 +393,7 @@ $i++;
 								<div class="caption-content">
 									<a href="img/large/06.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>Exclusive to Codrops</p>
+										<p>Warehouse Project</p>
 									</a>
 								</div>
 								</figcaption>
@@ -387,7 +419,7 @@ $i++;
 								<div class="caption-content">
 									<a href="img/large/08.jpg" class="single_image">
 										<i class="fa fa-search"></i><br>
-										<p>In Sydney, Australia</p>
+										<p>Just for Informatics</p>
 									</a>
 								</div>
 								</figcaption>
@@ -397,41 +429,24 @@ $i++;
 				</div>
 			</div>
 		</section>
+		
+<!-- BEAUTIFUL BLUE SECTION, GOOD FOR A FOOTER -->		
 		<section class="download" id="download">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center wp4">
-						<h1>Seen Enough?</h1>
-						<a href="#" class="download-btn">Download! <i class="fa fa-download"></i></a>
+						<!--h1>Seen Enough?</h1>
+						<a href="#" class="download-btn">Download! <i class="fa fa-download"></i></a-->
 					</div>
 				</div>
 			</div>
 		</section>
-		<footer>
-			<div class="container">
-				<!--div class="row">
-					<div class="col-md-5">
-						<h1 class="footer-logo">
-						<img src="img/logo-blue.png" alt="Footer Logo Blue">
-						</h1>
-						<p>© Boxify 2015 - <a href="http://tympanus.net/codrops/licensing/">Licence</a> - Designed &amp; Developed by <a href="http://www.peterfinlan.com/">Peter Finlan</a></p>
-					</div>
-					<div class="col-md-7">
-						<ul class="footer-nav">
-							<li><a href="#about">About</a></li>
-							<li><a href="#features">Features</a></li>
-							<li><a href="#screenshots">Screenshots</a></li>
-							<li><a href="#download">Download</a></li>
-						</ul>
-					</div-->
-				</div>
-			</div>
-		</footer>
+		
 		<div class="overlay overlay-boxify">
 			<nav>
 				<ul>
-					<li><a href="neworder.php"><i class="fa fa-heart"></i>client</a></li>
-					<li><a href="staff.php"><i class="fa fa-flash"></i>Staff</a></li>
+					<li><a href="admin.php"><i class="fa fa-heart"></i>admin</a></li>
+					<li><a href="employee.php"><i class="fa fa-flash"></i>Staff</a></li>
 				</ul>
 				
 			</nav>

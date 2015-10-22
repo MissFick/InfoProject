@@ -225,7 +225,7 @@
 						<?php
 						$conn = mysql_connect("localhost","root","");
 						mysql_select_db("whouse",$conn);
-						$result = mysql_query("SELECT * from order_details where client_id='1'");
+						$result = mysql_query("SELECT * from invoice WHERE client_id='2'");
 						$row= mysql_fetch_row($result);
 						?>
 						<h1>Your Orders are as follows</h1>
@@ -240,10 +240,10 @@ else
 $classname="oddRow";
 ?>
 				<div>	
-								<tr><td><?php echo $row["Order_Name"]; ?></td>
+								<tr><td><?php echo $row["order_name"]; ?></td>
 									<td><?php echo $row["storage_id"]; ?></td>
-								    <td><?php echo $row["Order_Qty"]; ?></td>
-									<td><a href="dispatchorder.php?Order_ID=<?php echo $row["Order_ID"];?>">Request Dispatch</a></td>
+								    <td><?php echo $row["qty"]; ?></td>
+									<td><a href="dispatch_request.php?invoice_id=<?php echo $row["invoice_id"];?>">Request Dispatch</a></td>
 								</tr>
 								<!--p class="color1 no_pad">Order_Date</p></*?php echo $row["order_date"]; ?>
 								<p class="color1 no_pad">Order_From</p></*?php echo $row["order_from"]; ?>
@@ -258,190 +258,7 @@ $i++;
 			</table>
 			</div>
 		</section>
-		<!--section class="showcase">
-			<div class="showcase-wrap">
-				<div class="texture-overlay"></div>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<div class="device wp3">
-								<div class="device-content">
-									<div class="showcase-slider">
-										<ul class="slides" id="showcaseSlider">
-											<li>
-												<img src="img/screen1.jpg" alt="Device Content Image">
-											</li>
-											<li>
-												<img src="img/screen2.jpg" alt="Device Content Image">
-											</li>
-											<li>
-												<img src="img/screen3.jpg" alt="Device Content Image">
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6">
-							<h1>Showcase your Product or Service</h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-							<blockquote class="team-quote">
-								<div class="avatar"><img src="img/avatar.png" alt="User Avatar"></div>
-								<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc." - Peter Finlan</p>
-								<div class="logo-quote">
-									<a href="http://tympanus.net/codrops/"><img src="img/codrops-logo.png" alt="Codrops Logo"></a>
-								</div>
-							</blockquote>
-							<a href="http://tympanus.net/codrops/?p=22554" class="download-btn">Download! <i class="fa fa-download"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section-->
-
-		<!--section class="screenshots-intro" id="">
-			<!--?php
-				$conn = mysql_connect("localhost","root","");
-				mysql_select_db("whouse",$conn);
-				$result = mysql_query("SELECT * FROM order");
-				$row= mysql_fetch_array($result);
-			?>
-			<div class="container" >
-				<div class="row">
-					<div class="col-md-12">
-						<h1>Storage Simplicity at your fingertips</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-						<p><a href="#screenshots" class="arrow-btn">See the screenshots! <i class="fa fa-long-arrow-right"></i></a></p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="screenshots" id="screenshots">
-			<div class="container-fluid">
-				<div class="row">
-					<ul class="grid">
-						<li>
-							<figure>
-								<img src="img/01-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/01.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>Optimised For Design</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="img/02-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/02.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>User Centric Design</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="img/03-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/03.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>Responsive and Adaptive</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="img/04-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/04.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>Absolutely Free</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-					</ul>
-				</div>
-				<div class="row">
-					<ul class="grid">
-						<li>
-							<figure>
-								<img src="img/05-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/05.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>Multi-Purpose Design</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="img/06-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/06.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>Exclusive to Codrops</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="img/07-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/07.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>Made with Love</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-						<li>
-							<figure>
-								<img src="img/08-screenshot.jpg" alt="Screenshot 01">
-								<figcaption>
-								<div class="caption-content">
-									<a href="img/large/08.jpg" class="single_image">
-										<i class="fa fa-search"></i><br>
-										<p>In Sydney, Australia</p>
-									</a>
-								</div>
-								</figcaption>
-							</figure>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-		<section class="download" id="download">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center wp4">
-						<h1>Seen Enough?</h1>
-						<a href="#" class="download-btn">Download! <i class="fa fa-download"></i></a>
-					</div>
-				</div>
-			</div>
-		</section-->
+		
 		<footer>
 			<div class="container">
 				<div class="row">

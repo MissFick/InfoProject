@@ -1,15 +1,4 @@
-<?php
-if(count($_POST)>0) {
 
-$conn = mysql_connect("localhost","root","");
-mysql_select_db("whouse",$conn);
-mysql_query("INSERT INTO neworder (Order_ID, Order_Name, Order_Date, Order_From, Order_To, Order_Qty, storage_id, client_id) VALUES ('', '" . $_POST["order_name"] . "','" . $_POST["order_from"] . "','" . $_POST["order_to"] . "','" . $_POST["order_qty"] ."','" . $_POST["unit_price"] . "','" . $_POST["email"] . "','" . $_POST["address"] . "')");
-$current_id = mysql_insert_id();
-if(!empty($current_id)) {
-$message = "New User Added Successfully";
-}
-}
-?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -45,20 +34,19 @@ $message = "New User Added Successfully";
 		<link rel="stylesheet" type="text/css" href="dp/bootstrap-datepicker.css" />
 		<script type="text/javascript" src="dp/bootstrap-datepicker.js"></script>
 		<script type="text/javascript" src="dp/jquery.timepicker.js"></script>
-		<script type="text/javascript" src="jquery.datepair.js"></script>
+
 		<script type="text/javascript" src="dp/datepair.js"></script>
 <script>
     // initialize input widgets first
 
     $('#basic .date').datepicker({
-        'format': 'yyyy-m-d',
+        'format': 'm/d/yyyy',
         'autoclose': true
     });
 
     // initialize datepair
     var basic = document.getElementById('basic');
     var datepair = new Datepair(basic);
-	 $('#basic').datepair();
 </script>
 		<title>Request for Storage</title>
 	</head>
@@ -138,73 +126,50 @@ $message = "New User Added Successfully";
 			<?php
 				$conn = mysql_connect("localhost","root","");
 				mysql_select_db("whouse",$conn);
-				$result = mysql_query("SELECT * FROM storage where storage_Id='1'");
+				$result = mysql_query("SELECT * FROM invoice where invoice_id='" . $_GET["invoice_id"] . "'");
 				$row= mysql_fetch_array($result);
 			?>
-				  <h1>Request for Shelf Storage</h1>
-                    <form method="post" action="invoice.php" class="elegant-aero" margin-left="20">
-					<table width="500" id="basic">
-						<tr><td><label>Number Of Storage Units Available</label></td><td> <?php echo $row["available"]; ?></td></tr>
-						<tr><td><label>Number of Units in Required:</label></td><td> <input type="text" name="order_qty"></td></tr>
-						<tr><td><label>Order Name:</label></td><td> <input type="text" name="order_name"  /></td></tr>
-						<tr><td><label>Date From </label></td><td><input type="text" name="order_from"  class="date"/></td></tr>
-						<tr><td><label>Date To</label></td><td><input type="text" name="order_to" /></td></tr>
-						<!--tr><td><label>Date From </label></td><td><input type="text" name="order_from" class="date .start" id="basic"/></td></tr>
-						<tr><td><label>Date To</label></td><td><input type="text" name="order_to" class="date .end" id="basic"/></td></tr-->
-												
-						<tr><td><label>Cost of Shelf Storage :</label></td><td> <?php echo $row["price"]; ?></td></tr>
-						</table>
-						<tr><td><label>Shelf Storage Price = per unit per day <br/>
-						<input type="hidden" name="storage_cost" id="storage_cost" value="<?php echo $row["price"]; ?>"><br/>
-						<input type="hidden" name="storage_id" id="storage_id" value="1"><br/>
-						<input type="hidden" name="client_id" id="client_id" value="2">
-						<input type="submit" name="submit" value="Submit" class="btnSubmit">
+			
+			 <h1>Request for Dispatch</h1>
+                    <form method="post" action="dispatch_request_details.php" class="elegant-aero" margin-left="20">
+					<div style="width:600px; margin-left: 20px">
+											<div align="right" style="padding-left: 5px; padding-bottom:5px; padding-top:-5px;"><!--a href="list_user.php" class="link"><img alt='List' title='List' src='images/list.png' width='15px' height='15px'/> List User</a--></div>
+											<table border="0" cellpadding="10" cellspacing="0" width="500" align="center" class="tblSaveForm">
+											<tr class="tableheader">
+											<td colspan="2">Dispatch Details</td>
+											</tr>
+									<tr>
+									<td><label>ID</label></td>
+									<td><input type="text" name="Order_ID" class="txtField" value="<?php echo $row['invoice_id']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Order Name</label></td>
+									<td><input type="text" name="order_name" class="txtField" value="<?php echo $row['order_name']; ?>"></td>
+									<tr>
+									</tr>
+									<td><label>Storage ID</label></td>
+									<td><input type="text" name="storage_id" class="txtField" value="<?php echo $row['storage_id']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Your ID</label></td>
+									<td><input type="text" name="client_id" class="txtField" value="<?php echo $row['client_id']; ?>"></td>
+									</tr>
+									<tr>
+									<td><label>Quantity</label></td>
+									<td><input type="text" name="qty" class="txtField" value="<?php echo $row['qty']; ?>"></td>
+									</tr>
+									<tr>
 						
-					</form>
-					<a href="neworder.php">Return To Home Page</a>
 									
-				<!--/dd>
-				<dt>Cold House</dt>
-				<dd>
-					<h1>Request for Cold Storage</h1>
-                     <form>
-						Number Of Cold Storage Units Required <input type="text" name="qty"><br/>
-						Number of Pallets in Total: <input type="text" name="pallets"><br/><br/>
-						
-						Number Of Days Required <input type="text" name="days"><br/>
-						Arrival Date: <input type="text" name="from"><br/>
-						Picking Date: <input type="text" name="to"><br/><br/>
-						
-						Total Cost of Cold Storage : <input type="text" name="cost"><br/>
-						Cold Storage = R1000  per unit per day <br/>
-						<input type="submit" name="submit" value="Submit" class="btnSubmit">
-					 </form>
-				</dd>
+									<td colspan="2"><input type="submit" name="submit" value="Request" class="btnSubmit"></td>
+									</tr>
+									</table>
+									</div>
+									</form>
 				
-				<dt>Hazard House</dt>
-				<dd>
-					<h1>Request for Hazardous Storage</h1>
-                     <form><table border="0">
-					 <tr>
-						<td>Number Of Hazardous Storage Units Required </td><td><input type="text" name="qty"></td></tr>
-						<tr><td>Number of Drums in Total: </td><td><input type=:"text" name="drums"></td></tr>
 						
-						<tr><td>Number Of Days Required </td><td><input type="text" name="days"></td></tr>
-						<tr><td>Arrival Date: </td><td><input type="text" name="from"></td></tr>
-						<tr><td>Picking Date: </td><td><input type="text" name="to"></td></tr>
-						<tr><td>Total Cost of Hazardous Storage : </td><td><input type="text" name="cost"></td></tr>
-						<table>
-						Hazardous Storage = R2000  per unit per day <br/>
-						<input type="submit" name="submit" value="Submit" class="btnSubmit" >
-					 </form>
-				</dd>
-				
-				<!--dt>Quotation</dt>
-				<dd>Slide content</dd>
-				
-				<dt>Labour Broking</dt>
-				<dd>Slide content</dd-->
-			</dl>
+						
+			
 		</div>
 		</section>
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
